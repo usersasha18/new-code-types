@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/slider.css">
+    <link rel="stylesheet" href="./css/theme.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>Document</title>
+</head>
+
+<body class="gray-theme">
+    <div class="layout">
+        <div class="register-modal">
+            <h2>Регистрация</h2>
+            <div class="inner-register-modal">
+                <div class="close-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M20 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 19V7h16l.001 12H4z">
+                        </path>
+                        <path
+                            d="m15.707 10.707-1.414-1.414L12 11.586 9.707 9.293l-1.414 1.414L10.586 13l-2.293 2.293 1.414 1.414L12 14.414l2.293 2.293 1.414-1.414L13.414 13z">
+                        </path>
+                    </svg>
+                </div>
+                <form class="modal-form">
+                    <p>Имя</p>
+                    <input type="text" name="name">
+                    <p>Почта</p>
+                    <input type="email" name="email">
+                    <p>Пароль</p>
+                    <input type="password" name="password">
+                    <button type="submit">Зарегистрироваться</button>
+
+                </form>
+            </div>
+        </div>
+        <div class="change-block">
+            <div class="theme-button" data-theme='light'>Светлая тема</div>
+            <div class="theme-button" data-theme='dark'>Темная тема</div>
+            <div class="theme-button" data-theme='orange'>Оранжевая тема</div>
+            <div class="theme-button" data-theme='gray'>Серая тема</div>
+        </div>
+        <header>
+            <div class="header-logo">
+                <a href="/">
+                    CodeTypes
+                </a>
+            </div>
+            <div class="header-buttons">
+                <button class="auth">Войти</button>
+                <button class="register">Зарегистрироваться</button>
+                <button class="change-button">
+                    <div class="light-block">Смена темы</div>
+                </button>
+            </div>
+        </header>
+        <aside>
+            <ul>
+                <li class="aside-active">
+                    <a href="game.html">
+                        Начать тренировку
+                    </a>
+                </li>
+                <li class="">
+                    <a href="about.html">
+                        Проект
+                    </a>
+                </li>
+                <li class="">
+                    <a href="contact.html">
+                        Контакты
+                    </a>
+                </li>
+            </ul>
+            <div class="aside-social">
+                <a href="https://discord.com/"><box-icon type='logo' name='discord'></box-icon></a>
+                <a href="https://t.me/sashaFeofanov"><box-icon name='telegram' type='logo'></box-icon></a>
+                <a href="https://www.youtube.com/channel/UCOwS9rKMmZjDfoC0W1yw--w"><box-icon name='youtube' type='logo'></box-icon></a>
+                <a href="https://vk.com/xerrl"><box-icon name='vk' type='logo'></box-icon></a>
+            </div>
+        </aside>
+        <main>
+
+            <span class="main-title">CodeTypes</span>
+            <h1>От 0 до 1 – печатай быстрее, чем мыслишь!</h1>
+            <div class="main-image">
+                <img src="./img/pngwing.com(5).png" alt="..." width="1000">
+            </div>
+
+            <section class="language-selection">
+                <h2 class="section-title">Выбери свой язык программирования</h2>
+                <div class="language-cards">
+                    <div class="lang-item">
+                        <h2>JavaScript</h2>
+                        <p>JavaScript — мультипарадигменный язык программирования. Поддерживает
+                            объектно-ориентированный, императивный и функциональный стили.</p>
+                        <button class="lang-button" data-lang="Js">Выбрать</button>
+                    </div>
+                    <div class="lang-item">
+                        <h2>Python</h2>
+                        <p>Python — высокоуровневый язык программирования общего назначения с динамической строгой
+                            типизацией и автоматическим управлением памятью.</p>
+                        <button class="lang-button" data-lang="Python">Выбрать</button>
+                    </div>
+                    <div class="lang-item">
+                        <h2>Java</h2>
+                        <p>Java — строго типизированный объектно-ориентированный язык программирования общего
+                            назначения.</p>
+                        <button class="lang-button" data-lang="Java">Выбрать</button>
+                    </div>
+                    <div class="lang-item">
+                        <h2>C#</h2>
+                        <p>C# — объектно-ориентированный язык программирования, разработанный компанией Microsoft под
+                            руководством Андерса Хейлсберга.</p>
+                        <button class="lang-button" data-lang="Cs">Выбрать</button>
+                    </div>
+                    <div class="lang-item">
+                        <h2>Ruby</h2>
+                        <p>Ruby — динамический, рефлективный, интерпретируемый язык высокого уровня с открытым исходным
+                            кодом.</p>
+                        <button class="lang-button" data-lang="Ruby">Выбрать</button>
+                    </div>
+                    <div class="lang-item">
+                        <h2>PHP</h2>
+                        <p>PHP — скриптовый язык общего назначения, интенсивно используемый для разработки
+                            веб-приложений.</p>
+                        <button class="lang-button" data-lang="php">Выбрать</button>
+                    </div>
+                </div>
+            </section>
+            <section class="section-slider">
+                <h1 class="slider-title">Особенности обучения на CodeTypes</h1>
+                <div class="prev-btn">← </div>
+                <div class="next-btn">→</div>
+                <div class="slider">
+                    <div class="slider-item active-slide">
+                        <h2>Интерактивность</h2>
+                        <p>
+                            Сайт может предоставлять интерактивные упражнения, которые помогают пользователям
+                            практиковать навыки печати и улучшать их.
+                        </p>
+                    </div>
+                    <div class="slider-item">
+                        <h2>Удобство использования</h2>
+                        <p>
+                            Интуитивно понятный интерфейс и простота навигации по сайту могут упростить процесс
+                            обучения.
+                        </p>
+                    </div>
+                    <div class="slider-item">
+                        <h2>Доступность</h2>
+                        <p>
+                            Если сайт доступен 24/7, пользователи могут практиковать печать в любое время, где угодно.
+                        </p>
+                    </div>
+                    <div class="slider-item">
+                        <h2>Статистика</h2>
+                        <p>
+                            Система может собирать статистику по скорости печати, ошибкам и другим метрикам, что может
+                            помочь пользователям понять, насколько они продвинулись.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="footer-section">
+                <h1 class="footer-title">Начни обучение прямо сейчас</h1>
+                <p class="footer-text">
+                    Научиться печатать вслепую может каждый! Это полезный и не очень сложный в освоении навык, который
+                    сэкономит ваше время и сделает работу за компьютером более эффективной. Нет смысла отклыдывать,
+                    начните прямо сейчас
+                </p>
+                <button class="footer-button">
+                    Начать обучение печати
+                </button>
+            </section>
+        </main>
+    </div>
+    <script src="./js/postRegData.js"></script>
+    <script src="./js/modal.js"></script>
+    <script src="./js/slider.js"></script>
+    <script src="./js/theme.js"></script>
+</body>
+
+</html>

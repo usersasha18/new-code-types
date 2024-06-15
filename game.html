@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/game.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/slider.css">
+    <link rel="stylesheet" href="./css/theme.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>Document</title>
+</head>
+
+<body class="gray-theme">
+    <div class="layout">
+        <div class="register-modal">
+            <h2>Регистрация</h2>
+            <div class="inner-register-modal">
+                <div class="close-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M20 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 19V7h16l.001 12H4z">
+                        </path>
+                        <path
+                            d="m15.707 10.707-1.414-1.414L12 11.586 9.707 9.293l-1.414 1.414L10.586 13l-2.293 2.293 1.414 1.414L12 14.414l2.293 2.293 1.414-1.414L13.414 13z">
+                        </path>
+                    </svg>
+                </div>
+                <form class="modal-form">
+                    <p>Имя</p>
+                    <input type="text" name="name">
+                    <p>Почта</p>
+                    <input type="email" name="email">
+                    <p>Пароль</p>
+                    <input type="password" name="password">
+                    <button type="submit">Зарегистрироваться</button>
+
+                </form>
+            </div>
+        </div>
+        <div class="change-block">
+            <div class="theme-button" data-theme='light'>Светлая тема</div>
+            <div class="theme-button" data-theme='dark'>Темная тема</div>
+            <div class="theme-button" data-theme='orange'>Оранжевая тема</div>
+            <div class="theme-button" data-theme='gray'>Серая тема</div>
+        </div>
+        <header>
+            <div class="header-logo">
+                <a href="/">
+                    CodeTypes
+                </a>
+            </div>
+            <div class="header-buttons">
+                <button class="auth">Войти</button>
+                <button class="register">Зарегистрироваться</button>
+                <button class="change-button">
+                    <div class="light-block">Смена темы</div>
+                </button>
+            </div>
+        </header>
+        <main>
+            <h1 class="game-title">Игра тайпинг</h1>
+            <div id="header">
+                <div id="info"></div>
+                <div id="buttons">
+                    <button id="newGameBtn">New game</button>
+                </div>
+            </div>
+            <div id="game" tabindex="0">
+                <div id="words"></div>
+                <div id="cursor"></div>
+                <div id="focus-error">Click here to focus</div>
+            </div>
+            <div class="keyboard">
+                <div class="top-buttons">
+                    <div class="key-button" data-button="Й">й</div>
+                    <div class="key-button" data-button="Ц">ц</div>
+                    <div class="key-button" data-button="У">у</div>
+                    <div class="key-button" data-button="К">к</div>
+                    <div class="key-button" data-button="Е">е</div>
+                    <div class="key-button" data-button="Н">н</div>
+                    <div class="key-button" data-button="Г">г</div>
+                    <div class="key-button" data-button="Ш">ш</div>
+                    <div class="key-button" data-button="Щ">щ</div>
+                    <div class="key-button" data-button="З">з</div>
+                    <div class="key-button" data-button="Х">х</div>
+                    <div class="key-button" data-button="Ъ">ъ</div>
+                </div>
+                <div class="middle-button">
+                    <div class="key-button" data-button="Ф">ф</div>
+                    <div class="key-button" data-button="Ы">ы</div>
+                    <div class="key-button" data-button="В">в</div>
+                    <div class="key-button" data-button="А">а</div>
+                    <div class="key-button" data-button="П">п</div>
+                    <div class="key-button" data-button="Р">р</div>
+                    <div class="key-button" data-button="О">о</div>
+                    <div class="key-button" data-button="Л">л</div>
+                    <div class="key-button" data-button="Д">д</div>
+                    <div class="key-button" data-button="Ж">ж</div>
+                    <div class="key-button" data-button="Э">э</div>
+                </div>
+                <div class="bottom-button">
+                    <div class="key-button" data-button="Я">я</div>
+                    <div class="key-button" data-button="Ч">ч</div>
+                    <div class="key-button" data-button="С">с</div>
+                    <div class="key-button" data-button="М">м</div>
+                    <div class="key-button" data-button="И">и</div>
+                    <div class="key-button" data-button="Т">т</div>
+                    <div class="key-button" data-button="Ь">ь</div>
+                    <div class="key-button" data-button="Б">б</div>
+                    <div class="key-button" data-button="Ю">ю</div>
+                </div>
+                <!-- <div class="more-button">
+                    <div class="key-button space" data-button="space"></div>
+                </div> -->
+            </div>
+        </main>
+    </div>
+    <script src="./js/game.js"></script>
+    <script src="./js/keyboard.js"></script>
+    <script src="./js/postRegData.js"></script>
+    <script src="./js/theme.js"></script>
+</body>
+</html>
