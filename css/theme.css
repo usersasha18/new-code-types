@@ -12,13 +12,17 @@
     --footer-button-color: #ffffff;
     --lang-card-color-tx: white;
     --lang-card-bg: rgb(77, 77, 77);
+    --main-title-color: white;
+    --footer-color: rgb(0, 0, 0);
+    --icon-bg-color: white;
+    --icon-border: 5px;
 }   
 .light-theme {
     --bg-color: rgb(255, 255, 255);
     --color-tx: black;
     --border-color: rgb(200, 200, 200);
     --layout-border: rgba(194, 194, 194, 0.739);
-    --main-title: rgba(96, 96, 96, 0.462);
+    --main-title: rgba(1, 1, 1, 0.462);
     --form-bg: #dcdcdc;
     --bx-shadow: rgba(0, 0, 0, 0.29);
     --close-btn: rgb(255, 255, 255);
@@ -26,19 +30,24 @@
     --footer-button-color: #7b7b7b;
     --lang-card-color-tx: black;
     --lang-card-bg: rgb(138, 138, 138);
+    --main-title-color: black;
+    --footer-color: black;
+
 }
 .orange-theme {
     --bg-color: rgb(255, 197, 126);
-    --color-tx: rgb(255, 115, 0);
+    --color-tx: rgb(49, 8, 0);
     --border-color: rgb(255, 102, 0);
     --layout-border: rgba(255, 128, 10, 0.739);
     --main-title: rgba(255, 145, 0, 0.369);
     --form-bg: #ffa874;
     --bx-shadow: rgba(255, 96, 0, 0.58);
     --close-btn: rgb(255, 98, 0);
-    --button-color: #ff6000;
-    --lang-card-color-tx: rgb(255, 55, 0);
+    --button-color: rgb(49, 8, 0);
+    --lang-card-color-tx: rgb(72, 12, 0);
     --lang-card-bg: rgb(236, 137, 50);
+    --main-title-color: rgb(56, 6, 0);
+    --footer-color: rgb(44, 6, 0);
 }
 
 .gray-theme {
@@ -54,6 +63,8 @@
     --button-color: #2a2a2a;
     --lang-card-color-tx: rgb(44, 44, 44);
     --lang-card-bg: rgb(211, 211, 211);
+    --main-title-color: rgb(255, 255, 255);
+    --footer-color: rgb(255, 255, 255);
 }
 body {
     background-color: var(--bg-color) !important;
