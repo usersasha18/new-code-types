@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/game-card.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/slider.css">
     <link rel="stylesheet" href="./css/theme.css">
@@ -13,6 +14,28 @@
 
 <body class="gray-theme">
     <div class="layout">
+        <div class="modal-card-container">
+            <div class="inner-modal-card-container">
+                <div class="modal-content">
+                    <span class="close-card-button">&times;</span>
+                    <h2>Тренажер печати для языка <span class="lang-name"></span></h2>
+                    <div id="header">
+                        <div id="info"></div>
+                        <div id="buttons">
+                            <button id="newGameBtn">Начать заново</button>
+                        </div>
+                    </div>
+                    <div id="game" tabindex="0">
+                        <div id="words"></div>
+                        <div id="cursor"></div>
+                        <div id="focus-error">Может сфокусируешься...?</div>
+                    </div>
+                    <div>
+                        <div class="resources-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="register-modal">
             <h2>Регистрация</h2>
             <div class="inner-register-modal">
@@ -38,6 +61,30 @@
                 </form>
             </div>
         </div>
+        <!-- модальное окно "Войти" -->
+        <div class="login-modal">
+            <h2>Войти</h2>
+            <div class="inner-register-modal-login">
+                <div class="close-btn-login">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M20 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 19V7h16l.001 12H4z">
+                        </path>
+                        <path
+                            d="m15.707 10.707-1.414-1.414L12 11.586 9.707 9.293l-1.414 1.414L10.586 13l-2.293 2.293 1.414 1.414L12 14.414l2.293 2.293 1.414-1.414L13.414 13z">
+                        </path>
+                    </svg>
+                </div>
+                <form class="modal-form-login">
+                    <p>Почта</p>
+                    <input type="email" name="email_login">
+                    <p>Пароль</p>
+                    <input type="password" name="password_login">
+                    <button type="submit">Войти</button>
+                </form>
+            </div>
+        </div>
+        <!-- модальное окно "Войти" -->
         <div class="change-block">
             <div class="theme-button" data-theme='light'>Светлая тема</div>
             <div class="theme-button" data-theme='dark'>Темная тема</div>
@@ -76,6 +123,9 @@
                     </a>
                 </li>
             </ul>
+            <div class="user-data">
+                
+            </div>
             <div class="aside-social">
                 <a href="https://discord.com/"><box-icon type='logo' name='discord'></box-icon></a>
                 <a href="https://t.me/sashaFeofanov"><box-icon name='telegram' type='logo'></box-icon></a>
@@ -176,12 +226,16 @@
                     начните прямо сейчас
                 </p>
                 <button class="footer-button">
-                    Начать обучение печати
+                   <a class="footer-link" href="game.html">Начать обучение печати
+                </a>
                 </button>
             </section>
         </main>
     </div>
+    <script src="./js/card-scripts/game-card.js"></script>
+    <script src="./js/card-modal-window.js"></script>
     <script src="./js/postRegData.js"></script>
+    <script src="./js/login.js"></script>
     <script src="./js/modal.js"></script>
     <script src="./js/slider.js"></script>
     <script src="./js/theme.js"></script>

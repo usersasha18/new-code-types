@@ -3,6 +3,22 @@ const register_modal_button = document.querySelector('[type="submit"]');
 const inner_modal_window_reg = document.querySelector('.inner-register-modal');
 const modal_window_reg = document.querySelector('.register-modal');
 const modal_window_reg_title = document.querySelector('.register-modal > h2');
+const user_data_display = document.querySelector('.user-data');
+const header_logout = document.querySelector('.header-logout');
+
+document.addEventListener('click', (event) => {
+    if (event.target.classList.contains('logout')) {
+        logoutUser();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    if (isLoggedIn && users.length > 0) {
+        displayUserData(users[users.length - 1]); // Отображаем данные последнего зарегистрированного пользователя
+    }
+});
 
 register_modal_form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -11,37 +27,31 @@ register_modal_form.addEventListener('submit', (event) => {
     const email = register_modal_form.querySelector('[name="email"]').value;
     const password = register_modal_form.querySelector('[name="password"]').value;
 
-    // Создаем новый экземпляр FormData
     const formData = {
         username: name,
         email: email,
         password: password
     };
 
-    // Получаем текущие данные из localStorage или создаем новый массив
     let users = JSON.parse(localStorage.getItem('users')) || [];
-
-    // Добавляем новые данные в массив
     users.push(formData);
-
-    // Сохраняем обновленный массив в localStorage
     localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('isLoggedIn', 'true'); // Устанавливаем флаг входа в систему
 
-    // Выводим данные в консоль
     console.log('User data saved:', formData);
 
-    // Обновляем интерфейс
-    modal_window_reg.style.gap = "10rem"
-    loaderTemplate()
+    modal_window_reg.style.gap = "10rem";
+    loaderTemplate();
     updateText("Спасибо за предоставление данных!", 2000)
     .then(() => updateText("Загружаем)", 2000))
     .then(() => updateText("Еще немного", 2500))
     .then(() => updateText("Возвращаю вас на главный экран", 2500));
 
-    setTimeout(()=>{
-        inner_modal_window_reg.classList.remove('show-modal')
-        modal_window_reg.classList.remove('register-modal-open')
-    },12000)
+    setTimeout(() => {
+        inner_modal_window_reg.classList.remove('show-modal');
+        modal_window_reg.classList.remove('register-modal-open');
+        displayUserData(formData); // Отображаем данные пользователя
+    }, 12000);
 });
 
 const updateText = (text, delay) => {
@@ -54,8 +64,10 @@ const updateText = (text, delay) => {
 };
 
 function loaderTemplate() {
-    html = `
-    		<div class="socket">
+    let html = `
+        <div class="socket">
+          
+		<div class="socket">
 			<div class="gel center-gel">
 				<div class="hex-brick h1"></div>
 				<div class="hex-brick h2"></div>
@@ -246,8 +258,27 @@ function loaderTemplate() {
 			
 		</div>
 	
-    
-    `
+        </div>
+    `;
     inner_modal_window_reg.innerHTML = html;
 }
 
+function displayUserData(userData) {
+    user_data_display.innerHTML = `
+        <h3>Данные пользователя:</h3>
+        <p>Имя: ${userData.username}</p>
+        <p>Email: ${userData.email}</p>
+        <button class="logout">Выйти</button>
+    `;
+    document.querySelector('.auth').style.display = "none";
+    document.querySelector('.register').style.display = "none";
+    header_logout.style.display = "block"; // Показываем кнопку "Выйти"
+}
+
+function logoutUser() {
+    localStorage.setItem('isLoggedIn', 'false'); // Сбрасываем флаг входа в систему
+    user_data_display.innerHTML = '';
+    document.querySelector('.auth').style.display = "block";
+    document.querySelector('.register').style.display = "block";
+    header_logout.style.display = "none"; // Скрываем кнопку "Выйти"
+}

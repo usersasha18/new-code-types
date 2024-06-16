@@ -17,6 +17,7 @@ body {
         'header header'
         'sidebar main';
     height: 100vh;
+    overflow-y: hidden;
 }
 
 header {
@@ -283,6 +284,11 @@ textarea {
     z-index: 3 !important;
     opacity: 1 !important;
 }
+
+.register-modal-open-login {
+  z-index: 3 !important;
+  opacity: 1 !important;
+}
 .register-modal {
     opacity: 0;
     background-color: var(--bg-color);
@@ -297,6 +303,22 @@ textarea {
     margin: 0 auto;
     height: 100vh;
     transition: opacity .3s linear;
+}
+
+.login-modal {
+  opacity: 0;
+  background-color: var(--bg-color);
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 3rem;
+  justify-content: center;
+  margin: 0 auto;
+  height: 100vh;
+  transition: opacity .3s linear;
 }
 
 
@@ -315,12 +337,25 @@ textarea {
     background-color: var(--bg-color);
     border-radius: 10px;
 }
+
+.inner-register-modal-login {
+  opacity: 0;
+  transform: perspective(0) translateY(-10%);
+  
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background-color: var(--bg-color);
+  border-radius: 10px;
+}
+
 .inner-register-modal.show-modal {
     opacity: 1;
     transform: perspective(400px) translateY(3%);
 }
 .modal-form > p {
     color: var(--color-tx);
+}
+.modal-form-login > p {
+  color: var(--color-tx);
 }
 .close-btn {
     position: absolute;
@@ -329,6 +364,20 @@ textarea {
     cursor: pointer;
 }
 
+.logout {
+  background-color: var(--bg-color);
+  color: var(--color-tx);
+  border-radius: 5px;
+  padding: 4px;
+
+}
+
+.close-btn-login {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  cursor: pointer;
+}
 .footer-title {
     font-size: 50px;
     color: var(--color-tx);
@@ -727,4 +776,64 @@ textarea {
         flex-direction: row;
         gap: 10px;
     }
+}
+
+.modal-card-container {
+  display: none;
+}
+/* Общий контейнер для модального окна */
+.inner-modal-card-container {
+ /* Скрыть по умолчанию */
+  position: fixed; /* Фиксированное положение */
+  z-index: 1000; /* Убедиться, что модальное окно находится поверх других элементов */
+  left: 0;
+  top: 0;
+  width: 100%; /* Полная ширина */
+  height: 100%; /* Полная высота */
+  overflow-y: hidden; /* Добавить прокрутку, если содержимое больше экрана */
+  background-color: rgba(0,0,0,0.4); /* Черный фон с небольшой прозрачностью */
+}
+
+/* Контейнер для содержимого модального окна */
+.modal-content {
+  position: relative;
+  background-color: var(--bg-color);
+  margin: 5% auto; /* Центрирование по вертикали и автоматическое выравнивание по горизонтали */
+  padding: 20px;
+  border: 2px solid var(--border-color);
+  width: 80%;
+  height:50%; /* Ширина относительно родительского элемента */
+  max-width: 1200px; /* Максимальная ширина */
+  height: 600px; /* Максимальная высота */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); /* Тень для эффекта "всплывания" */
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+/* Кнопка закрытия */
+.close-card-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-card-button:hover,
+.close-card-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Анимация появления модального окна */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+.resources-container {
+  padding: 40px;
+}
+.footer-link {
+  color: var(--color-tx);
 }

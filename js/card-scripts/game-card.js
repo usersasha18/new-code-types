@@ -1,60 +1,97 @@
-const words = 'апрель август белый большой весна взгляд вкус год город декабрь день дождь друг душа еда жара зима июнь июль книга конец лето линия март месяц море мысль надежда ночь осень ответ память песня путь район река родина рука север сентябрь снег солнце счастье тепло утро февраль холод час человек школа январь яблоко язык яма ясно ящик ячейка ягода язычок язык'.split(' ');
-// const words = 'function var let const if else for while return true false null undefined class extends new this super import export async await try catch throw'.split(' ');
+const wordsJS = 'function var let const if else for while return true false null undefined class extends new this super import export async await try catch throw'.split(' ');
+const wordsPHP = 'echo print isset unset include require function class interface trait namespace new return if else foreach for while do break continue switch case default try catch finally throw'.split(' ');
+const wordsCSharp = 'class interface namespace using static void int string bool new public private protected internal if else switch case default while for foreach do break continue return try catch finally throw'.split(' ');
+const wordsJava = 'class interface package import public private protected static final void int double boolean char String new if else switch case default while for do break continue return try catch finally throw'.split(' ');
+const wordsPython = 'def class if else elif while for in not or and is import from as return try except finally raise print True False None'.split(' ');
+const wordsRuby = 'def end if else elsif unless while until for in do break next redo retry return class module include extend require self true false nil'.split(' ');
 
+let currentWords = wordsJS; // По умолчанию используем JavaScript
 
-const wordsCount = words.length;
+const card_buttons_lang = document.querySelectorAll(".lang-button");
+card_buttons_lang.forEach(element => {
+    element.addEventListener('click', () => {
+        const lang = element.dataset.lang;
+        switch (lang) {
+            case 'Js':
+                currentWords = wordsJS;
+                break;
+            case 'php':
+                currentWords = wordsPHP;
+                break;
+            case 'Cs':
+                currentWords = wordsCSharp;
+                break;
+            case 'Java':
+                currentWords = wordsJava;
+                break;
+            case 'Python':
+                currentWords = wordsPython;
+                break;
+            case 'Ruby':
+                    currentWords = wordsRuby;
+                    break;
+            default:
+                currentWords = wordsJS;
+                break;
+        }
+        newGame(); // Перезапускаем игру с новым языком
+    });
+});
+
+const wordsCount = currentWords.length;
 const gameTime = 30 * 1000;
 window.timer = null;
 window.gameStart = null;
 window.pauseTime = 0;
 
-function addClass(el,name) {
-  el.className += ' '+name;
+function addClass(el, name) {
+    el.className += ' ' + name;
 }
-function removeClass(el,name) {
-  el.className = el.className.replace(name,'');
+
+function removeClass(el, name) {
+    el.className = el.className.replace(name, '');
 }
 
 function randomWord() {
-  const randomIndex = Math.ceil(Math.random() * wordsCount);
-  return words[randomIndex - 1];
+    const randomIndex = Math.ceil(Math.random() * wordsCount);
+    return currentWords[randomIndex - 1];
 }
 
 function formatWord(word) {
-  return `<div class="word"><span class="letter">${word.split('').join('</span><span class="letter">')}</span></div>`;
+    return `<div class="word"><span class="letter">${word.split('').join('</span><span class="letter">')}</span></div>`;
 }
 
 function newGame() {
-  document.getElementById('words').innerHTML = '';
-  for (let i = 0; i < 200; i++) {
-    document.getElementById('words').innerHTML += formatWord(randomWord());
-  }
-  addClass(document.querySelector('.word'), 'current');
-  addClass(document.querySelector('.letter'), 'current');
+    document.getElementById('words').innerHTML = '';
+    for (let i = 0; i < 200; i++) {
+        document.getElementById('words').innerHTML += formatWord(randomWord());
+    }
+    addClass(document.querySelector('.word'), 'current');
+    addClass(document.querySelector('.letter'), 'current');
 
-  document.getElementById('info').innerHTML = (gameTime / 1000) + '';
-  window.timer = null;
+    document.getElementById('info').innerHTML = (gameTime / 1000) + '';
+    window.timer = null;
 }
 
 function getWpm() {
-  const words = [...document.querySelectorAll('.word')];
-  const lastTypedWord = document.querySelector('.word.current');
-  const lastTypedWordIndex = words.indexOf(lastTypedWord) + 1;
-  const typedWords = words.slice(0, lastTypedWordIndex);
-  const correctWords = typedWords.filter(word => {
-    const letters = [...word.children];
-    const incorrectLetters = letters.filter(letter => letter.className.includes('incorrect'));
-    const correctLetters = letters.filter(letter => letter.className.includes('correct'));
-    return incorrectLetters.length === 0 && correctLetters.length === letters.length;
-  });
-  return correctWords.length / gameTime * 60000;
+    const words = [...document.querySelectorAll('.word')];
+    const lastTypedWord = document.querySelector('.word.current');
+    const lastTypedWordIndex = words.indexOf(lastTypedWord) + 1;
+    const typedWords = words.slice(0, lastTypedWordIndex);
+    const correctWords = typedWords.filter(word => {
+        const letters = [...word.children];
+        const incorrectLetters = letters.filter(letter => letter.className.includes('incorrect'));
+        const correctLetters = letters.filter(letter => letter.className.includes('correct'));
+        return incorrectLetters.length === 0 && correctLetters.length === letters.length;
+    });
+    return correctWords.length / gameTime * 60000;
 }
 
 function gameOver() {
-  clearInterval(window.timer);
-  addClass(document.getElementById('game'), 'over');
-  const result = getWpm();
-  document.getElementById('info').innerHTML = `WPM: ${result}`;
+    clearInterval(window.timer);
+    addClass(document.getElementById('game'), 'over');
+    const result = getWpm();
+    document.getElementById('info').innerHTML = `WPM: ${result}`;
 }
 
 
@@ -145,7 +182,7 @@ document.getElementById('game').addEventListener('keyup', (event) => {
     if (currentWord.getBoundingClientRect().top > 350) {
       const words = document.getElementById('words');
       const margin = parseInt(words.style.marginTop || '0px');
-      words.style.marginTop = (margin - 35) + 'px';
+    //   words.style.marginTop = (margin - 35) + 'px';
     }
     // передвижение курсора
     const nextLetter = document.querySelector('.letter.current');
