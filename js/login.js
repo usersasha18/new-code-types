@@ -52,6 +52,7 @@ function displayUserData(userData) {
         <h3>Данные пользователя:</h3>
         <p>Имя: ${userData.username}</p>
         <p>Email: ${userData.email}</p>
+        		<p>WPM: ${userData.wpm}</p>
         <button class="logout">Выйти</button>
     `;
     document.querySelector('.auth').style.display = "none";

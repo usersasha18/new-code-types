@@ -50,11 +50,24 @@ function getWpm() {
   return correctWords.length / gameTime * 60000;
 }
 
+function saveWpmToLocalStorage(wpm) {
+  // Проверяем, есть ли уже сохраненные данные в localStorage
+  let users = JSON.parse(localStorage.getItem('users')) || [];
+
+  // Добавляем новый результат WPM
+  users.push({ wpm: wpm });
+
+  // Сохраняем обновленный список пользователей в localStorage
+  localStorage.setItem('users', JSON.stringify(users));
+}
+
 function gameOver() {
   clearInterval(window.timer);
   addClass(document.getElementById('game'), 'over');
   const result = getWpm();
   document.getElementById('info').innerHTML = `WPM: ${result}`;
+
+  saveWpmToLocalStorage(result);
 }
 
 
